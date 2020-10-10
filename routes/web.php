@@ -34,7 +34,7 @@ Route::get('/menu',function(){
 });
 
 Route::get('/admin',function(){
-  
+
     return view('admin');
 
 });
@@ -46,6 +46,11 @@ Route::get('/additem',function(){
 Route::get('/updateitem',function(){
     return view('updateItem');
 });
+Route::get('/rederect',function(){
+    return redirect('admin');
+});
+
+
 
 Route::post('/save','addItemController@store')-> name('input_img');
 
@@ -62,6 +67,11 @@ Route::get('/menu','addItemController@displayMenu');
 Route::get('/createpdf','addItemController@Generate');
 
 Route::get('/downloadPDF','addItemController@downloadPDF');
+
+Route:: get('/search','addItemController@search');
+
+
+
 
 
 

@@ -154,10 +154,16 @@ class addItemController extends Controller
         // $pdf = PDF::loadHTML(compact('shows'));
         // return $pdf-> download('food item.pdf');
         // return $shows;
+    }
 
+     public function search(){
 
+        $search_text = $_GET['search'];
+        $add_items = addItem::where('name','LIKE','%'.$search_text.'%')->get();
+        return view('search',compact('add_items'));
 
      }
+
 
 
 
