@@ -27,11 +27,11 @@ class addItemController extends Controller
         $add_Items = new addItem;
 
 
-        // $this->validate($request,[
-        //     'item_name'=>'required|max:50|min:2',
-        //     'item_code'=>'required|max:50|min:2',
-        //     'item_price'=>'required|max:50|min:1',
-        //     'item_details'=>'required|max:100|min:2',]);
+        $this->validate($request,[
+            'item_name'=>'required|max:50|min:2',
+            'item_code'=>'required|max:50|min:2',
+            'item_price'=>'required|max:50|min:1',
+            'item_details'=>'required|max:100|min:2',]);
 
 
 

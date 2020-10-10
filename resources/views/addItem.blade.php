@@ -16,14 +16,20 @@
 }
 </style>
 <script>
-    function validateForm() {
-      var x = document.forms["inputForm"]["item_name"].value;
-      if (x == "") {
-        alert("Name must be filled out");
-        return false;
+    function validation() {
+      // Get the value of the input field with id="numb"
+
+      var x = document.forms["inputForm"]["input_f3"].value;
+
+      // If x is Not a Number or less than one or greater than 10
+      if (isNaN(x) || x < 1 || x > 10000) {
+        confirm("Price Must be Number");
+
       }
+
     }
     </script>
+
 
 </head>
 <body>
@@ -76,14 +82,14 @@
     </nav>
     <main role="main">
     <div class="container">
-{{-- @foreach($errors ->all() as $error)
+@foreach($errors ->all() as $error)
 <div class="alert alert-danger" role="alert">
     {{$error}}
   </div>
 
-@endforeach --}}
+@endforeach
 
-<form enctype="multipart/form-data" method="POST" action="/save" onsubmit="return validateForm()" name="inputForm">
+<form enctype="multipart/form-data" method="POST" action="/save" onsubmit= "validation()" name="inputForm">
     {{csrf_field()}}
         <div class="card-body" >
             <div class="align-content-md-center">
@@ -107,7 +113,7 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleFormControlInput3">3.Item price</label>
-                        <input type="number" class="form-control" name="item_price" placeholder="price" id="input_f3">
+                        <input type="text" class="form-control" name="item_price" placeholder="price" id="input_f3">
                         </div>
                         <div class="form-group">
                             <label for="exampleFormControlInput4">4.Item Details</label>
@@ -123,7 +129,7 @@
 
                         <br>
                         <div class="text-center">
-                        <input type="submit" class="btn btn-outline-dark" value="ADD">
+                        <input type="submit" class="btn btn-outline-dark" value="ADD" onclick=>
 
                         <input type="reset" class="btn btn-outline-danger" value="CLEAR">
                         </div>
