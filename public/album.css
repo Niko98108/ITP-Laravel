@@ -1,0 +1,31 @@
+.big-banner{
+    background-image:url("../images/banner.jpg" );
+
+}
+body{
+    background-color: #212326 !important;
+    background-image:url("../images/bg-food3.jpg" );
+}
+.main-row{
+    margin-top: 10%;
+}
+.card{
+    cursor: pointer;
+}
+.card img{
+    transform: translateY(-40px);
+    border-radius: 1px;
+    z-index: 1;
+}
+.card.card-body{
+    visibility: hidden;
+    transform: translateY(-150px);
+    height: 0px;
+
+}
+.card:hover .card-body{
+    visibility: visible;
+    transform: translateY(-50px);
+    transition: 0.5s;
+    height: auto;
+}
