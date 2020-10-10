@@ -134,6 +134,17 @@
 
 
     </main>
-    @include('sweetalert::alert')
+    {{-- @include('sweetalert::alert') --}}
+    <button onclick="myFunction()" class="btn btn-outline-info">Demo</button>
+    <script>
+       function myFunction() {
+       document.getElementById("input_f1").value ="Pasta" ;
+       document.getElementById("input_f2").value = "y456" ;
+       document.getElementById("input_f3").value = 500 ;
+       document.getElementById("input_f4").value = "cheesy" ;
+    //    document.getElementById("imageInput").src = "E:/Laravel/backup/ITP/public/images/menu-sample-pasta.jpg" ;
+
+       }
+       </script>
     </body>
 </html>
