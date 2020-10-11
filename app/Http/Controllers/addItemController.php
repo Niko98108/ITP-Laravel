@@ -4,25 +4,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\addItem;
 use RealRashid\SweetAlert\Facades\Alert;
-
-
-
-// Use Alert;
-
-
-
-// use Barryvdh\DomPDF\PDF;
-
 // use Barryvdh\DomPDF\PDF;
 use Barryvdh\DomPDF\Facade as PDF;
-use Dompdf\Positioner\NullPositioner;
-use Illuminate\Support\Facades\Redirect;
-use PHPUnit\Framework\CoveredCodeNotExecutedException;
 
 class addItemController extends Controller
 {
 
-    public function store(Request $request){
+    public function store(Request $request){   // store data into database(add btn)
 
         // dd($request->all());
         $add_Items = new addItem;
@@ -56,6 +44,10 @@ class addItemController extends Controller
 
         $add_Items -> save();
 
+
+
+
+
         Alert::success('Success Title', 'Success Message');
 
         return redirect('admin');
@@ -69,18 +61,18 @@ class addItemController extends Controller
 
     }
 
-    public function display(){
+    public function display(){         // display all data in admin view
         $add_items = addItem:: all();
         return view('admin')->with('add_items',$add_items);
     }
 
-     public function edit($id){
+     public function edit($id){          // edit btn function
         $add_items = addItem:: find($id);
         return view('updateItem')-> with('add_items',$add_items);
 
      }
 
-     public function update(Request $request, $id){
+     public function update(Request $request, $id){  //update btn function in updateItem view
 
         // dd($request->all());
         // $affected = DB::table('users')
@@ -116,7 +108,7 @@ class addItemController extends Controller
 
 
 
-     public function delete($id){
+     public function delete($id){               // delete btn in admin view
         $add_Items = addItem:: find($id);
         $add_Items-> delete();
 
@@ -126,34 +118,34 @@ class addItemController extends Controller
 
      }
 
-     public function displayMenu(){
+     public function displayMenu(){   // all food item display in menu view
         $add_items =addItem::all();
         return view ('menu')->with('add_items',$add_items);
 
      }
 
-     public function Generate(){
+     public function Generate(){ //pdf btn in admin view
 
-        $shows = addItem::all();
+        $item = addItem::all();
 
-        return view('pdf', compact('shows'));
+        return view('pdf', compact('item'))->with('item',$item);
 
         // $pdf = PDF::loadHTML('admin');
         // return $pdf-> download('food item.pdf');
 
      }
 
-     public  function downloadPDF(){
+     public function downloadPDF(){             // download  btn in pdf view
 
 
-        $shows  = addItem::all();
+        $item  = addItem::all();
         //  dd($shows->all());
-        $pdf = PDF::loadView('pdf',compact('shows'));
-        return $pdf->stream('foof-List.pdf');
+        $pdf = PDF::loadView('pdf',compact('item'));
+        return $pdf->download('food-List.pdf');
 
     }
 
-     public function search(){
+     public function search(){             //search box in admin view
 
         $search_text = $_GET['search'];
         $add_items = addItem::where('name','LIKE','%'.$search_text.'%')->get();

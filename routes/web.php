@@ -4,7 +4,7 @@ use App\Http\Controllers\addItemController;
 use Illuminate\Support\Facades\Route;
 use RealRashid\SweetAlert\Facades\Alert;
 // use Barryvdh\DomPDF\PDF;
-use Barryvdh\DomPDF\Facade as PDF;
+// use Barryvdh\DomPDF\Facade as PDF;
 
 // Use Alert;
 
@@ -24,57 +24,53 @@ use Barryvdh\DomPDF\Facade as PDF;
 
 Route::get('/', function () {
 
-    Alert::success('Success Title', 'Success Message');
+
     return view('welcome');
 
 });
 
 
 
-Route::get('/menu',function(){
+Route::get('/menu',function(){   // menu page
     return view('menu');
 });
 
-Route::get('/admin',function(){
+Route::get('/admin',function(){ // admin page
 
     return view('admin');
 
 });
 
-Route::get('/additem',function(){
+Route::get('/additem',function(){   //add btn in admin view
     return view('addItem');
 });
 
-Route::get('/updateitem',function(){
+Route::get('/updateitem',function(){  //update view
     return view('updateItem');
 });
-Route::get('/rederect',function(){
+Route::get('/rederect',function(){ //admin btn in search view
     return redirect('admin');
 });
-// Route::get('/downloadPDF',function(){
-//    $pdf = PDF::loadView('pdf');
-//    return $pdf->download('food.pdf');
-
-// });
 
 
-Route::post('/save','addItemController@store')-> name('input_img');
 
-Route::get('/admin','addItemController@display');
+Route::post('/save','addItemController@store')-> name('input_img'); //add btn in additem view
 
-Route::get('/updateItem{id}','addItemController@edit');
+Route::get('/admin','addItemController@display');    // admin view display all data
 
-Route::Put('/update/{id}', 'addItemController@update');
+Route::get('/updateItem{id}','addItemController@edit'); // edit btn in admin view
 
-Route::get('/deleteItem{id}', 'addItemController@delete');
+Route::Put('/update/{id}', 'addItemController@update'); //update btn in updateItem view
 
-Route::get('/menu','addItemController@displayMenu');
+Route::get('/deleteItem{id}', 'addItemController@delete'); //delete btn in admin view
 
-Route::get('/createpdf','addItemController@Generate');
+Route::get('/menu','addItemController@displayMenu'); // disaplay function
 
-Route::get('/downloadPDF','addItemController@downloadPDF');
+Route::get('/createpdf','addItemController@Generate'); // pdf btn in admin view
 
-Route:: get('/search','addItemController@search');
+Route::get('/downloadPDF','addItemController@downloadPDF'); // download btn in pdf view
+
+Route:: get('/search','addItemController@search'); //serch box in admin view
 
 
 

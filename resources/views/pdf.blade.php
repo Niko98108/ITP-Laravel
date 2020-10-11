@@ -31,13 +31,13 @@
           </thead>
           <tbody>
             <tr>
-              @foreach( $shows as $shows)
-              <th scope="row">{{$shows->id}}</th>
-              <td><img src="{{ asset('images/')}}" width="50px" alt="{{$shows->image}}"></td>
-              <td>{{$shows->name}}</td>
-              <td>{{$shows->item_code}}</td>
-              <td>{{$shows->price}}</td>
-              <td>{{$shows->details}}</td>
+              @foreach( $item as $item)
+              <th scope="row">{{$item->id}}</th>
+              <td><img src="{{ asset('images/')}}"alt="{{$item->image}}"></td>
+              <td>{{$item->name}}</td>
+              <td>{{$item->item_code}}</td>
+              <td>{{$item->price}}</td>
+              <td>{{$item->details}}</td>
                 </tr>
                 @endforeach
           </tbody>
