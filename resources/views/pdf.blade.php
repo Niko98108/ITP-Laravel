@@ -10,11 +10,13 @@
 
 </head>
 <body>
+    <main>
     <div class="container">
         <h4 class="display-4">Yummy Hut Menu-PDF</h4>
         <div class="blockquote text-right">
-        <a href="/downloadPDF" class="btn btn-info">Download</a>
-        </div>
+            <a href="/downloadPDF" class="btn btn-info">Download</a>
+            </div>
+
         <table class="table table-hover">
           <thead>
             <tr>
@@ -42,6 +44,8 @@
         </table>
       </div>
 
+    </main>
 
 </body>
+
 </html>

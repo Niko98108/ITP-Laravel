@@ -3,6 +3,8 @@
 use App\Http\Controllers\addItemController;
 use Illuminate\Support\Facades\Route;
 use RealRashid\SweetAlert\Facades\Alert;
+// use Barryvdh\DomPDF\PDF;
+use Barryvdh\DomPDF\Facade as PDF;
 
 // Use Alert;
 
@@ -49,7 +51,11 @@ Route::get('/updateitem',function(){
 Route::get('/rederect',function(){
     return redirect('admin');
 });
+// Route::get('/downloadPDF',function(){
+//    $pdf = PDF::loadView('pdf');
+//    return $pdf->download('food.pdf');
 
+// });
 
 
 Route::post('/save','addItemController@store')-> name('input_img');

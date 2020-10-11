@@ -6,6 +6,7 @@ use App\addItem;
 use RealRashid\SweetAlert\Facades\Alert;
 
 
+
 // Use Alert;
 
 
@@ -57,7 +58,7 @@ class addItemController extends Controller
 
         Alert::success('Success Title', 'Success Message');
 
-        return redirect('admin')->with('success','Food item is created');
+        return redirect('admin');
 
         // ->with('add_items',$add_Items);
 
@@ -144,16 +145,12 @@ class addItemController extends Controller
 
      public  function downloadPDF(){
 
-        $shows  = addItem::all();
-        //  dd($add_item->all());
-        // $pdf = PDF ::loadView('pdf',$shows);
-        $pdf = PDF::loadview('pdf',compact('shows'));
-          return $pdf-> download('food item.pdf');
-        //   return $pdf->download('food_menu.pdf');
 
-        // $pdf = PDF::loadHTML(compact('shows'));
-        // return $pdf-> download('food item.pdf');
-        // return $shows;
+        $shows  = addItem::all();
+        //  dd($shows->all());
+        $pdf = PDF::loadView('pdf',compact('shows'));
+        return $pdf->stream('foof-List.pdf');
+
     }
 
      public function search(){
